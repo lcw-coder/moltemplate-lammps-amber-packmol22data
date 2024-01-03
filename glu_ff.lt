@@ -1,0 +1,422 @@
+####################################################################
+# To use this, LAMMPS must be compiled with the EXTRA-MOLECULE package
+# (See here for details: https://docs.lammps.org/Build_package.html)
+#######################################################################
+#    This moltemplate (LT) file was generated automatically using
+#      amber2lt.py -in glu_gaff2.frcmod --name glu_ff
+#######################################################################
+#      USAGE SUGGESTIONS:
+# Suppose you named your force field "GAFF"  (using amber2lt.py's "--name"
+# argument) and saved it in a file named "gaff.lt".  Then, in order to create
+# molecules that use this force field, create a file for each type of molecule
+# (eg "benzene.lt") and use this format:
+# #---- "benzene.lt" file -----
+# import "gaff.lt"
+# Benzene inherits GAFF {
+#   write('Data Atoms') {
+#     $atom:c1  $mol  @atom:ca  -0.115   -0.739   1.189  -0.00733
+#     $atom:c2  $mol  @atom:ca  -0.115    0.614   1.208   0.35167
+#        :        :        :
+#   }
+#   write("Data Bond List") {
+#     $bond:b1 $atom:C1 $atom:C2
+#        :
+#   }
+# }
+#
+# ------- How to generate molecule files (such as "benzene.lt") -------
+#
+# You can try to generate these files manually, but you must be careful
+# to choose the correct @atom types for each atom (eg "@atom:ca"),
+# and you must obtain the atomic charge (column 4) by other means. (See below.)
+#
+# Recommended method:
+#
+# Use AmberTools to create a MOL2 file containing one of the molecules
+# you want to simulate.  Suppose you use AmberTools to prepare a MOL2 file
+# containing a single benzene molecule (named "benzene.mol2")
+# and a corresponding FRCMOD file (named "benzene.frcmod").  Use:
+#
+# mol22lt.py --in benzene.mol2 --out benzene.lt --name Benzene \
+#            --ff MyForceField --ff-file my_force_field.lt
+# amber2lt.py --in benzene.frcmod --name MyForceField >> my_force_field.lt
+#
+# ...The resulting "benzene.lt" file will have this format:
+# #---- "benzene.lt" file -----
+# import "my_force_field.lt"
+# Benzene inherits MyForceField {
+#   :
+# }
+# Repeat this for each different type of molecule you want in your simulation.
+# (If it is a molecule with multiple chains, do this for every chain.)
+# (If you want to start over, delete the "my_force_field.lt" file.)
+#######################################################################
+
+
+glu_ff {
+
+  #  @atom:oh  
+  #  @atom:c  
+  #  @atom:c3  
+  #  @atom:n  
+  #  @atom:cc  
+  #  @atom:o  
+  #  @atom:n3  
+  #  @atom:ca  
+  #  @atom:na  
+  #  @atom:cd  
+  #  @atom:ho  
+  #  @atom:hc  
+  #  @atom:h1  
+  #  @atom:hn  
+  #  @atom:h4  
+  #  @atom:ha  
+
+  write_once("Data Masses") {
+    @atom:oh 16.000
+    @atom:c 12.010
+    @atom:c3 12.010
+    @atom:n 14.010
+    @atom:cc 12.010
+    @atom:o 16.000
+    @atom:n3 14.010
+    @atom:ca 12.010
+    @atom:na 14.010
+    @atom:cd 12.010
+    @atom:ho 1.008
+    @atom:hc 1.008
+    @atom:h1 1.008
+    @atom:hn 1.008
+    @atom:h4 1.008
+    @atom:ha 1.008
+  } # (end of masses)
+
+  write_once("In Settings") {
+    pair_coeff @atom:oh @atom:oh lj/charmm/coul/long 0.0930 3.242871334030835
+    pair_coeff @atom:c @atom:c lj/charmm/coul/long 0.0988 3.3152123099438304
+    pair_coeff @atom:c3 @atom:c3 lj/charmm/coul/long 0.1078 3.397709531243626
+    pair_coeff @atom:n @atom:n lj/charmm/coul/long 0.1636 3.1808647832482673
+    pair_coeff @atom:cc @atom:cc lj/charmm/coul/long 0.0988 3.3152123099438304
+    pair_coeff @atom:o @atom:o lj/charmm/coul/long 0.1463 3.048120874245357
+    pair_coeff @atom:n3 @atom:n3 lj/charmm/coul/long 0.0858 3.36510263815969
+    pair_coeff @atom:ca @atom:ca lj/charmm/coul/long 0.0988 3.3152123099438304
+    pair_coeff @atom:na @atom:na lj/charmm/coul/long 0.2042 3.2058099473561965
+    pair_coeff @atom:cd @atom:cd lj/charmm/coul/long 0.0988 3.3152123099438304
+    pair_coeff @atom:ho @atom:ho lj/charmm/coul/long 0.0047 0.5379246460131368
+    pair_coeff @atom:hc @atom:hc lj/charmm/coul/long 0.0208 2.600176998764394
+    pair_coeff @atom:h1 @atom:h1 lj/charmm/coul/long 0.0208 2.4219972551363265
+    pair_coeff @atom:hn @atom:hn lj/charmm/coul/long 0.0100 1.1064962079303013
+    pair_coeff @atom:h4 @atom:h4 lj/charmm/coul/long 0.0161 2.536388650545546
+    pair_coeff @atom:ha @atom:ha lj/charmm/coul/long 0.0161 2.62547852235958
+  } # (end of pair_coeffs)
+
+  write_once("In Settings") {
+    bond_coeff @bond:c-oh harmonic 359.27 1.356
+    bond_coeff @bond:ho-oh harmonic 535.51 0.973
+    bond_coeff @bond:c-c3 harmonic 234.85 1.527
+    bond_coeff @bond:c-o harmonic 590.60 1.219
+    bond_coeff @bond:c3-c3 harmonic 228.89 1.535
+    bond_coeff @bond:c3-hc harmonic 345.25 1.096
+    bond_coeff @bond:c3-n harmonic 254.46 1.464
+    bond_coeff @bond:c3-h1 harmonic 344.22 1.097
+    bond_coeff @bond:c-n harmonic 317.46 1.397
+    bond_coeff @bond:hn-n harmonic 527.30 1.013
+    bond_coeff @bond:c3-n3 harmonic 255.85 1.463
+    bond_coeff @bond:c3-cc harmonic 255.14 1.500
+    bond_coeff @bond:ca-cc harmonic 296.50 1.453
+    bond_coeff @bond:cc-cd harmonic 386.24 1.373
+    bond_coeff @bond:hn-n3 harmonic 511.30 1.019
+    bond_coeff @bond:ca-ca harmonic 354.25 1.399
+    bond_coeff @bond:ca-na harmonic 329.32 1.386
+    bond_coeff @bond:cd-na harmonic 332.45 1.383
+    bond_coeff @bond:hn-na harmonic 481.77 1.010
+    bond_coeff @bond:cd-h4 harmonic 367.29 1.082
+    bond_coeff @bond:ca-ha harmonic 360.69 1.086
+  } # (end of bond_coeffs)
+
+  write_once("Data Bonds By Type") {
+    @bond:c-oh @atom:c @atom:oh
+    @bond:ho-oh @atom:ho @atom:oh
+    @bond:c-c3 @atom:c @atom:c3
+    @bond:c-o @atom:c @atom:o
+    @bond:c3-c3 @atom:c3 @atom:c3
+    @bond:c3-hc @atom:c3 @atom:hc
+    @bond:c3-n @atom:c3 @atom:n
+    @bond:c3-h1 @atom:c3 @atom:h1
+    @bond:c-n @atom:c @atom:n
+    @bond:hn-n @atom:hn @atom:n
+    @bond:c3-n3 @atom:c3 @atom:n3
+    @bond:c3-cc @atom:c3 @atom:cc
+    @bond:ca-cc @atom:ca @atom:cc
+    @bond:cc-cd @atom:cc @atom:cd
+    @bond:hn-n3 @atom:hn @atom:n3
+    @bond:ca-ca @atom:ca @atom:ca
+    @bond:ca-na @atom:ca @atom:na
+    @bond:cd-na @atom:cd @atom:na
+    @bond:hn-na @atom:hn @atom:na
+    @bond:cd-h4 @atom:cd @atom:h4
+    @bond:ca-ha @atom:ca @atom:ha
+  } # (end of Bonds By Type)
+
+  write_once("In Settings") {
+    angle_coeff @angle:c3-c-oh harmonic 77.420 112.740
+    angle_coeff @angle:o-c-oh harmonic 102.030 122.090
+    angle_coeff @angle:c-oh-ho harmonic 68.460 106.540
+    angle_coeff @angle:c-c3-c3 harmonic 60.360 111.430
+    angle_coeff @angle:c-c3-hc harmonic 43.630 108.950
+    angle_coeff @angle:c3-c-o harmonic 76.450 122.900
+    angle_coeff @angle:c3-c3-c3 harmonic 59.870 112.630
+    angle_coeff @angle:c3-c3-hc harmonic 43.270 109.680
+    angle_coeff @angle:c3-c3-n harmonic 64.950 112.780
+    angle_coeff @angle:c3-c3-h1 harmonic 43.280 109.590
+    angle_coeff @angle:c-n-c3 harmonic 77.240 118.830
+    angle_coeff @angle:c3-n-hn harmonic 46.100 117.680
+    angle_coeff @angle:c-c3-n harmonic 65.390 111.940
+    angle_coeff @angle:c-c3-h1 harmonic 43.740 108.370
+    angle_coeff @angle:h1-c3-n harmonic 48.090 108.760
+    angle_coeff @angle:c3-c-n harmonic 65.190 117.160
+    angle_coeff @angle:n-c-o harmonic 86.680 122.570
+    angle_coeff @angle:c-n-hn harmonic 48.700 117.550
+    angle_coeff @angle:c-c3-n3 harmonic 65.010 113.360
+    angle_coeff @angle:c3-c3-cc harmonic 60.460 112.960
+    angle_coeff @angle:c3-n3-hn harmonic 47.800 109.290
+    angle_coeff @angle:c3-c3-n3 harmonic 64.900 113.080
+    angle_coeff @angle:c3-cc-ca harmonic 58.760 126.340
+    angle_coeff @angle:c3-cc-cd harmonic 59.860 127.710
+    angle_coeff @angle:cc-c3-hc harmonic 44.040 110.360
+    angle_coeff @angle:ca-ca-cc harmonic 62.190 120.910
+    angle_coeff @angle:cc-cd-na harmonic 71.990 108.990
+    angle_coeff @angle:cc-cd-h4 harmonic 44.200 127.640
+    angle_coeff @angle:h1-c3-n3 harmonic 47.840 110.090
+    angle_coeff @angle:ca-cc-cd harmonic 64.000 116.030
+    angle_coeff @angle:ca-ca-na harmonic 67.820 120.310
+    angle_coeff @angle:ca-ca-ca harmonic 63.670 120.020
+    angle_coeff @angle:ca-ca-ha harmonic 44.900 119.880
+    angle_coeff @angle:ca-na-cd harmonic 83.510 108.770
+    angle_coeff @angle:ca-na-hn harmonic 55.270 125.510
+    angle_coeff @angle:h4-cd-na harmonic 48.080 120.170
+    angle_coeff @angle:cd-na-hn harmonic 55.430 125.240
+    angle_coeff @angle:hc-c3-hc harmonic 35.800 107.730
+    angle_coeff @angle:hn-n3-hn harmonic 40.800 106.400
+  } # (end of angle_coeffs)
+
+  write_once("Data Angles By Type") {
+    @angle:c3-c-oh @atom:c3 @atom:c @atom:oh
+    @angle:o-c-oh @atom:o @atom:c @atom:oh
+    @angle:c-oh-ho @atom:c @atom:oh @atom:ho
+    @angle:c-c3-c3 @atom:c @atom:c3 @atom:c3
+    @angle:c-c3-hc @atom:c @atom:c3 @atom:hc
+    @angle:c3-c-o @atom:c3 @atom:c @atom:o
+    @angle:c3-c3-c3 @atom:c3 @atom:c3 @atom:c3
+    @angle:c3-c3-hc @atom:c3 @atom:c3 @atom:hc
+    @angle:c3-c3-n @atom:c3 @atom:c3 @atom:n
+    @angle:c3-c3-h1 @atom:c3 @atom:c3 @atom:h1
+    @angle:c-n-c3 @atom:c @atom:n @atom:c3
+    @angle:c3-n-hn @atom:c3 @atom:n @atom:hn
+    @angle:c-c3-n @atom:c @atom:c3 @atom:n
+    @angle:c-c3-h1 @atom:c @atom:c3 @atom:h1
+    @angle:h1-c3-n @atom:h1 @atom:c3 @atom:n
+    @angle:c3-c-n @atom:c3 @atom:c @atom:n
+    @angle:n-c-o @atom:n @atom:c @atom:o
+    @angle:c-n-hn @atom:c @atom:n @atom:hn
+    @angle:c-c3-n3 @atom:c @atom:c3 @atom:n3
+    @angle:c3-c3-cc @atom:c3 @atom:c3 @atom:cc
+    @angle:c3-n3-hn @atom:c3 @atom:n3 @atom:hn
+    @angle:c3-c3-n3 @atom:c3 @atom:c3 @atom:n3
+    @angle:c3-cc-ca @atom:c3 @atom:cc @atom:ca
+    @angle:c3-cc-cd @atom:c3 @atom:cc @atom:cd
+    @angle:cc-c3-hc @atom:cc @atom:c3 @atom:hc
+    @angle:ca-ca-cc @atom:ca @atom:ca @atom:cc
+    @angle:cc-cd-na @atom:cc @atom:cd @atom:na
+    @angle:cc-cd-h4 @atom:cc @atom:cd @atom:h4
+    @angle:h1-c3-n3 @atom:h1 @atom:c3 @atom:n3
+    @angle:ca-cc-cd @atom:ca @atom:cc @atom:cd
+    @angle:ca-ca-na @atom:ca @atom:ca @atom:na
+    @angle:ca-ca-ca @atom:ca @atom:ca @atom:ca
+    @angle:ca-ca-ha @atom:ca @atom:ca @atom:ha
+    @angle:ca-na-cd @atom:ca @atom:na @atom:cd
+    @angle:ca-na-hn @atom:ca @atom:na @atom:hn
+    @angle:h4-cd-na @atom:h4 @atom:cd @atom:na
+    @angle:cd-na-hn @atom:cd @atom:na @atom:hn
+    @angle:hc-c3-hc @atom:hc @atom:c3 @atom:hc
+    @angle:hn-n3-hn @atom:hn @atom:n3 @atom:hn
+  } # (end of Angles By Type)
+
+  write_once("In Settings") {
+    dihedral_coeff @dihedral:oh-c-c3-c3 fourier 1 0.0 2 180.0 
+    dihedral_coeff @dihedral:oh-c-c3-hc fourier 1 0.0 2 180.0 
+    dihedral_coeff @dihedral:c-c3-c3-c3 fourier 3 0.0 3 0.0 0.04 2 0.0 0.46 1 180.0 
+    dihedral_coeff @dihedral:c-c3-c3-hc fourier 1 0.15555555555555556 3 0.0 
+    dihedral_coeff @dihedral:c3-c3-c3-n fourier 1 0.1 3 0.0 
+    dihedral_coeff @dihedral:c3-c3-c3-h1 fourier 1 0.15555555555555556 3 0.0 
+    dihedral_coeff @dihedral:o-c-c3-c3 fourier 3 0.2 2 180.0 0.44 3 180.0 0.68 1 0.0 
+    dihedral_coeff @dihedral:c3-c3-n-c fourier 3 0.65 4 180.0 0.03 3 180.0 2.26 1 0.0 
+    dihedral_coeff @dihedral:c3-c3-n-hn fourier 1 0.0 2 0.0 
+    dihedral_coeff @dihedral:c3-c-oh-ho fourier 1 1.8 2 180.0 
+    dihedral_coeff @dihedral:c3-c-n-c3 fourier 3 1.41 2 180.0 2.93 1 0.0 0.5 3 0.0 
+    dihedral_coeff @dihedral:o-c-n-c3 fourier 1 2.5 2 180.0 
+    dihedral_coeff @dihedral:c-c3-n-c fourier 2 0.39 2 180.0 0.64 1 0.0 
+    dihedral_coeff @dihedral:c-c3-n-hn fourier 1 0.0 2 0.0 
+    dihedral_coeff @dihedral:oh-c-c3-n fourier 1 0.0 2 180.0 
+    dihedral_coeff @dihedral:o-c-c3-n fourier 1 0.0 2 180.0 
+    dihedral_coeff @dihedral:n-c-c3-c3 fourier 2 0.0 4 180.0 0.71 2 180.0 
+    dihedral_coeff @dihedral:n-c-c3-n3 fourier 1 0.0 2 180.0 
+    dihedral_coeff @dihedral:n-c-c3-h1 fourier 1 0.0 2 180.0 
+    dihedral_coeff @dihedral:c-c3-c3-cc fourier 1 0.15555555555555556 3 0.0 
+    dihedral_coeff @dihedral:c-c3-n3-hn fourier 1 0.3 3 0.0 
+    dihedral_coeff @dihedral:c3-c3-cc-ca fourier 1 0.372 3 0.0 
+    dihedral_coeff @dihedral:c3-c3-cc-cd fourier 1 0.157 3 180.0 
+    dihedral_coeff @dihedral:c3-c3-n3-hn fourier 1 0.217 3 0.0 
+    dihedral_coeff @dihedral:ca-ca-cc-c3 fourier 1 0.6 2 180.0     # same as ca-ca-ce-c3, penalty score=136.0
+    dihedral_coeff @dihedral:c3-cc-cd-na fourier 1 4.0 2 180.0 
+    dihedral_coeff @dihedral:c3-cc-cd-h4 fourier 1 4.0 2 180.0 
+    dihedral_coeff @dihedral:cc-ca-ca-na fourier 1 3.625 2 180.0 
+    dihedral_coeff @dihedral:ca-ca-ca-cc fourier 1 3.625 2 180.0 
+    dihedral_coeff @dihedral:cc-ca-ca-ha fourier 1 3.625 2 180.0 
+    dihedral_coeff @dihedral:o-c-c3-hc fourier 2 4.03 1 0.0 3.66 2 180.0 
+    dihedral_coeff @dihedral:o-c-c3-n3 fourier 1 0.0 2 180.0 
+    dihedral_coeff @dihedral:o-c-c3-h1 fourier 2 0.8 1 0.0 0.08 3 180.0 
+    dihedral_coeff @dihedral:cc-c3-c3-n3 fourier 1 0.15555555555555556 3 0.0 
+    dihedral_coeff @dihedral:hc-c3-c3-n3 fourier 1 0.1 3 0.0 
+    dihedral_coeff @dihedral:ca-cc-cd-na fourier 1 4.0 2 180.0 
+    dihedral_coeff @dihedral:ca-cc-cd-h4 fourier 1 4.0 2 180.0 
+    dihedral_coeff @dihedral:ca-ca-na-cd fourier 1 0.3 2 180.0 
+    dihedral_coeff @dihedral:ca-ca-na-hn fourier 1 0.3 2 180.0 
+    dihedral_coeff @dihedral:ca-ca-ca-ca fourier 1 3.625 2 180.0 
+    dihedral_coeff @dihedral:ca-ca-ca-ha fourier 1 3.625 2 180.0 
+    dihedral_coeff @dihedral:cc-cd-na-ca fourier 1 1.7 2 180.0 
+    dihedral_coeff @dihedral:h4-cd-na-ca fourier 1 1.7 2 180.0 
+    dihedral_coeff @dihedral:ca-ca-ca-na fourier 1 3.625 2 180.0 
+    dihedral_coeff @dihedral:ha-ca-ca-na fourier 1 3.625 2 180.0 
+    dihedral_coeff @dihedral:ca-ca-cc-cd fourier 1 0.585 2 180.0     # same as ca-ca-ce-c2, penalty score=223.0
+    dihedral_coeff @dihedral:o-c-oh-ho fourier 2 2.3 2 180.0 1.9 1 0.0 
+    dihedral_coeff @dihedral:c3-c3-c3-hc fourier 1 0.13 3 0.0 
+    dihedral_coeff @dihedral:hc-c3-c3-hc fourier 1 0.12 3 0.0 
+    dihedral_coeff @dihedral:hc-c3-c3-n fourier 1 0.15555555555555556 3 0.0 
+    dihedral_coeff @dihedral:h1-c3-c3-hc fourier 1 0.15555555555555556 3 0.0 
+    dihedral_coeff @dihedral:oh-c-c3-h1 fourier 1 0.0 2 180.0 
+    dihedral_coeff @dihedral:h1-c3-n-c fourier 1 0.0 2 180.0 
+    dihedral_coeff @dihedral:h1-c3-n-hn fourier 1 0.0 2 0.0 
+    dihedral_coeff @dihedral:c3-c-n-hn fourier 1 2.5 2 180.0 
+    dihedral_coeff @dihedral:o-c-n-hn fourier 2 2.5 2 180.0 2.0 1 0.0 
+    dihedral_coeff @dihedral:cc-c3-c3-h1 fourier 1 0.15555555555555556 3 0.0 
+    dihedral_coeff @dihedral:h1-c3-n3-hn fourier 1 0.3 3 0.0 
+    dihedral_coeff @dihedral:hc-c3-cc-ca fourier 1 0.0 3 0.0 
+    dihedral_coeff @dihedral:hc-c3-cc-cd fourier 1 0.0 3 0.0 
+    dihedral_coeff @dihedral:cc-cd-na-hn fourier 1 1.7 2 180.0 
+    dihedral_coeff @dihedral:h4-cd-na-hn fourier 1 1.7 2 180.0 
+    dihedral_coeff @dihedral:ha-ca-ca-ha fourier 1 3.625 2 180.0 
+  } # (end of dihedral_coeffs)
+
+  write_once("Data Dihedrals By Type") {
+    @dihedral:oh-c-c3-c3 @atom:oh @atom:c @atom:c3 @atom:c3
+    @dihedral:oh-c-c3-hc @atom:oh @atom:c @atom:c3 @atom:hc
+    @dihedral:c-c3-c3-c3 @atom:c @atom:c3 @atom:c3 @atom:c3
+    @dihedral:c-c3-c3-hc @atom:c @atom:c3 @atom:c3 @atom:hc
+    @dihedral:c3-c3-c3-n @atom:c3 @atom:c3 @atom:c3 @atom:n
+    @dihedral:c3-c3-c3-h1 @atom:c3 @atom:c3 @atom:c3 @atom:h1
+    @dihedral:o-c-c3-c3 @atom:o @atom:c @atom:c3 @atom:c3
+    @dihedral:c3-c3-n-c @atom:c3 @atom:c3 @atom:n @atom:c
+    @dihedral:c3-c3-n-hn @atom:c3 @atom:c3 @atom:n @atom:hn
+    @dihedral:c3-c-oh-ho @atom:c3 @atom:c @atom:oh @atom:ho
+    @dihedral:c3-c-n-c3 @atom:c3 @atom:c @atom:n @atom:c3
+    @dihedral:o-c-n-c3 @atom:o @atom:c @atom:n @atom:c3
+    @dihedral:c-c3-n-c @atom:c @atom:c3 @atom:n @atom:c
+    @dihedral:c-c3-n-hn @atom:c @atom:c3 @atom:n @atom:hn
+    @dihedral:oh-c-c3-n @atom:oh @atom:c @atom:c3 @atom:n
+    @dihedral:o-c-c3-n @atom:o @atom:c @atom:c3 @atom:n
+    @dihedral:n-c-c3-c3 @atom:n @atom:c @atom:c3 @atom:c3
+    @dihedral:n-c-c3-n3 @atom:n @atom:c @atom:c3 @atom:n3
+    @dihedral:n-c-c3-h1 @atom:n @atom:c @atom:c3 @atom:h1
+    @dihedral:c-c3-c3-cc @atom:c @atom:c3 @atom:c3 @atom:cc
+    @dihedral:c-c3-n3-hn @atom:c @atom:c3 @atom:n3 @atom:hn
+    @dihedral:c3-c3-cc-ca @atom:c3 @atom:c3 @atom:cc @atom:ca
+    @dihedral:c3-c3-cc-cd @atom:c3 @atom:c3 @atom:cc @atom:cd
+    @dihedral:c3-c3-n3-hn @atom:c3 @atom:c3 @atom:n3 @atom:hn
+    @dihedral:ca-ca-cc-c3 @atom:ca @atom:ca @atom:cc @atom:c3
+    @dihedral:c3-cc-cd-na @atom:c3 @atom:cc @atom:cd @atom:na
+    @dihedral:c3-cc-cd-h4 @atom:c3 @atom:cc @atom:cd @atom:h4
+    @dihedral:cc-ca-ca-na @atom:cc @atom:ca @atom:ca @atom:na
+    @dihedral:ca-ca-ca-cc @atom:ca @atom:ca @atom:ca @atom:cc
+    @dihedral:cc-ca-ca-ha @atom:cc @atom:ca @atom:ca @atom:ha
+    @dihedral:o-c-c3-hc @atom:o @atom:c @atom:c3 @atom:hc
+    @dihedral:o-c-c3-n3 @atom:o @atom:c @atom:c3 @atom:n3
+    @dihedral:o-c-c3-h1 @atom:o @atom:c @atom:c3 @atom:h1
+    @dihedral:cc-c3-c3-n3 @atom:cc @atom:c3 @atom:c3 @atom:n3
+    @dihedral:hc-c3-c3-n3 @atom:hc @atom:c3 @atom:c3 @atom:n3
+    @dihedral:ca-cc-cd-na @atom:ca @atom:cc @atom:cd @atom:na
+    @dihedral:ca-cc-cd-h4 @atom:ca @atom:cc @atom:cd @atom:h4
+    @dihedral:ca-ca-na-cd @atom:ca @atom:ca @atom:na @atom:cd
+    @dihedral:ca-ca-na-hn @atom:ca @atom:ca @atom:na @atom:hn
+    @dihedral:ca-ca-ca-ca @atom:ca @atom:ca @atom:ca @atom:ca
+    @dihedral:ca-ca-ca-ha @atom:ca @atom:ca @atom:ca @atom:ha
+    @dihedral:cc-cd-na-ca @atom:cc @atom:cd @atom:na @atom:ca
+    @dihedral:h4-cd-na-ca @atom:h4 @atom:cd @atom:na @atom:ca
+    @dihedral:ca-ca-ca-na @atom:ca @atom:ca @atom:ca @atom:na
+    @dihedral:ha-ca-ca-na @atom:ha @atom:ca @atom:ca @atom:na
+    @dihedral:ca-ca-cc-cd @atom:ca @atom:ca @atom:cc @atom:cd
+    @dihedral:o-c-oh-ho @atom:o @atom:c @atom:oh @atom:ho
+    @dihedral:c3-c3-c3-hc @atom:c3 @atom:c3 @atom:c3 @atom:hc
+    @dihedral:hc-c3-c3-hc @atom:hc @atom:c3 @atom:c3 @atom:hc
+    @dihedral:hc-c3-c3-n @atom:hc @atom:c3 @atom:c3 @atom:n
+    @dihedral:h1-c3-c3-hc @atom:h1 @atom:c3 @atom:c3 @atom:hc
+    @dihedral:oh-c-c3-h1 @atom:oh @atom:c @atom:c3 @atom:h1
+    @dihedral:h1-c3-n-c @atom:h1 @atom:c3 @atom:n @atom:c
+    @dihedral:h1-c3-n-hn @atom:h1 @atom:c3 @atom:n @atom:hn
+    @dihedral:c3-c-n-hn @atom:c3 @atom:c @atom:n @atom:hn
+    @dihedral:o-c-n-hn @atom:o @atom:c @atom:n @atom:hn
+    @dihedral:cc-c3-c3-h1 @atom:cc @atom:c3 @atom:c3 @atom:h1
+    @dihedral:h1-c3-n3-hn @atom:h1 @atom:c3 @atom:n3 @atom:hn
+    @dihedral:hc-c3-cc-ca @atom:hc @atom:c3 @atom:cc @atom:ca
+    @dihedral:hc-c3-cc-cd @atom:hc @atom:c3 @atom:cc @atom:cd
+    @dihedral:cc-cd-na-hn @atom:cc @atom:cd @atom:na @atom:hn
+    @dihedral:h4-cd-na-hn @atom:h4 @atom:cd @atom:na @atom:hn
+    @dihedral:ha-ca-ca-ha @atom:ha @atom:ca @atom:ca @atom:ha
+  } # (end of Dihedrals By Type)
+
+  write_once("In Settings") {
+    improper_coeff @improper:c3-o-c-oh cvff 1.1 -1 2
+    improper_coeff @improper:c-c3-n-hn cvff 1.1 -1 2
+    improper_coeff @improper:c3-n-c-o cvff 10.5 -1 2    # Using general improper torsional angle X- X- c- o, penalty score= 6.0)
+    improper_coeff @improper:c3-ca-cc-cd cvff 1.1 -1 2    # Using the default value
+    improper_coeff @improper:ca-ca-ca-cc cvff 1.1 -1 2    # Using the default value
+    improper_coeff @improper:ca-ca-ca-na cvff 1.1 -1 2    # Using the default value
+    improper_coeff @improper:ca-cd-na-hn cvff 1.1 -1 2    # Using general improper torsional angle X- X-na-hn, penalty score= 6.0)
+    improper_coeff @improper:cc-h4-cd-na cvff 1.1 -1 2    # Same as X -X -ca-ha, penalty score= 67.2 (use general term))
+    improper_coeff @improper:ca-ca-ca-ha cvff 1.1 -1 2    # Using general improper torsional angle X- X-ca-ha, penalty score= 6.0)
+  } # (end of improper_coeffs)
+
+  write_once("Data Impropers By Type (gaff_imp.py)") {
+    @improper:c3-o-c-oh @atom:c3 @atom:o @atom:c @atom:oh
+    @improper:c-c3-n-hn @atom:c @atom:c3 @atom:n @atom:hn
+    @improper:c3-n-c-o @atom:c3 @atom:n @atom:c @atom:o
+    @improper:c3-ca-cc-cd @atom:c3 @atom:ca @atom:cc @atom:cd
+    @improper:ca-ca-ca-cc @atom:ca @atom:ca @atom:ca @atom:cc
+    @improper:ca-ca-ca-na @atom:ca @atom:ca @atom:ca @atom:na
+    @improper:ca-cd-na-hn @atom:ca @atom:cd @atom:na @atom:hn
+    @improper:cc-h4-cd-na @atom:cc @atom:h4 @atom:cd @atom:na
+    @improper:ca-ca-ca-ha @atom:ca @atom:ca @atom:ca @atom:ha
+  } # (end of Impropers By Type)
+
+
+  write_once("In Init") {
+    # Default styles and settings for AMBER based force-fields:
+    units           real
+    atom_style      full
+    bond_style      hybrid harmonic
+    angle_style     hybrid harmonic
+    dihedral_style  hybrid fourier
+    improper_style  hybrid cvff
+    pair_style      hybrid lj/charmm/coul/long 9.0 10.0 10.0
+    kspace_style    pppm 0.0001
+
+    # NOTE: If you do not want to use long-range coulombic forces,
+    #       comment out the two lines above and uncomment this line:
+    # pair_style      hybrid lj/charmm/coul/charmm 9.0 10.0
+
+    pair_modify     mix arithmetic
+    special_bonds   amber
+  }
+
+} # glu_ff
+

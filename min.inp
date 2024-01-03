@@ -1,0 +1,20 @@
+tolerance 2.0
+filetype pdb
+output systemAB.pdb
+add_box_sides
+
+structure SLAB.pdb
+		number 1
+		inside box 0. 0. 6. 62. 65. 35.
+end structure
+
+structure GLU.pdb
+		number 30
+		inside box 0. 0. 20. 62. 65. 90.
+end structure
+
+structure spce.pdb
+		number 30
+		inside box 0. 0. 20. 62. 65. 90.
+end structure
+

@@ -1,0 +1,13 @@
+import "slab.lt"
+import "glu.lt"
+import "spce.lt"
+
+SLAB = new slab[1]
+GLU = new glu[30]
+WAT = new SPCE[30]
+
+write_once("Date Boundary") {
+0 62.3 xlo xhi
+0 62.3 ylo yhi
+0 95.3 zlo zhi
+}

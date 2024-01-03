@@ -1,0 +1,124 @@
+import "glu_ff.lt"
+
+
+glu inherits glu_ff {
+
+  #  atomId molId atomType charge X Y Z
+
+  write("Data Atoms"){
+    $atom:O $mol:m @atom:oh -0.6161 -5.285 0.501 -1.017
+    $atom:C $mol:m @atom:c 0.6431 -4.861 0.935 0.365
+    $atom:C1 $mol:m @atom:c3 -0.1264 -4.887 2.427 0.745
+    $atom:C2 $mol:m @atom:c3 -0.0834 -3.526 2.877 1.311
+    $atom:C3 $mol:m @atom:c3 0.0697 -2.412 2.743 0.254
+    $atom:C4 $mol:m @atom:c 0.6131 -1.107 3.318 0.836
+    $atom:N $mol:m @atom:n -0.5479 -2.202 1.302 -0.147
+    $atom:C5 $mol:m @atom:c 0.6161 -1.676 0.303 0.856
+    $atom:C6 $mol:m @atom:c3 0.1095 -1.346 -1.134 0.409
+    $atom:C7 $mol:m @atom:c3 -0.0152 -0.016 -1.577 1.045
+    $atom:C8 $mol:m @atom:cc -0.1614 1.103 -0.627 0.581
+    $atom:O1 $mol:m @atom:o -0.545 -4.341 -0.083 1.352
+    $atom:O2 $mol:m @atom:o -0.6101 -1.395 0.732 2.276
+    $atom:N1 $mol:m @atom:n3 -0.8858 -2.45 -2.068 0.845
+    $atom:C9 $mol:m @atom:ca -0.1038 2.452 -0.392 1.273
+    $atom:C10 $mol:m @atom:ca -0.0482 3.181 0.709 0.529
+    $atom:N2 $mol:m @atom:na -0.1904 2.311 1.184 -0.614
+    $atom:C11 $mol:m @atom:cd -0.0931 1.026 0.375 -0.592
+    $atom:C12 $mol:m @atom:ca -0.145 4.57 1.189 0.964
+    $atom:C13 $mol:m @atom:ca -0.111 5.214 0.509 2.197
+    $atom:C14 $mol:m @atom:ca -0.156 4.463 -0.62 2.961
+    $atom:C15 $mol:m @atom:ca -0.097 3.059 -1.082 2.499
+    $atom:O3 $mol:m @atom:oh -0.6061 -1.072 4.742 1.337
+    $atom:O4 $mol:m @atom:o -0.553 0.136 2.464 0.907
+    $atom:H $mol:m @atom:ho 0.443 -6.371 0.273 -1.014
+    $atom:H1 $mol:m @atom:hc 0.0802 -5.691 2.593 1.536
+    $atom:H2 $mol:m @atom:hc 0.0802 -5.133 3.05 -0.177
+    $atom:H3 $mol:m @atom:hc 0.0922 -3.262 2.253 2.228
+    $atom:H4 $mol:m @atom:hc 0.0922 -3.605 3.974 1.612
+    $atom:H5 $mol:m @atom:h1 0.0987 -2.7 3.351 -0.666
+    $atom:H6 $mol:m @atom:hn 0.3315 -2.407 0.982 -1.19
+    $atom:H7 $mol:m @atom:h1 0.0847 -1.249 -1.164 -0.726
+    $atom:H8 $mol:m @atom:hc 0.0712 0.228 -2.64 0.713
+    $atom:H9 $mol:m @atom:hc 0.0712 -0.102 -1.541 2.182
+    $atom:H10 $mol:m @atom:hn 0.3618 -3.406 -1.752 0.379
+    $atom:H11 $mol:m @atom:hn 0.3618 -2.547 -2.032 1.95
+    $atom:H12 $mol:m @atom:hn 0.3007 2.562 1.991 -1.333
+    $atom:H13 $mol:m @atom:h4 0.173 0.143 0.503 -1.301
+    $atom:H14 $mol:m @atom:ha 0.133 5.11 2.02 0.4
+    $atom:H15 $mol:m @atom:ha 0.131 6.248 0.837 2.549
+    $atom:H16 $mol:m @atom:ha 0.133 4.949 -1.111 3.868
+    $atom:H17 $mol:m @atom:ha 0.158 2.498 -1.908 3.049
+    $atom:H18 $mol:m @atom:ho 0.448 -0.05 4.983 1.695
+  } # Atoms section
+
+  #  bondId  atomId1 atomId2
+
+  write("Data Bond List") {
+    $bond:b1  $atom:O  $atom:C
+    $bond:b2  $atom:C  $atom:C1
+    $bond:b3  $atom:C1  $atom:C2
+    $bond:b4  $atom:C2  $atom:C3
+    $bond:b5  $atom:C3  $atom:C4
+    $bond:b6  $atom:C3  $atom:N
+    $bond:b7  $atom:N  $atom:C5
+    $bond:b8  $atom:C5  $atom:C6
+    $bond:b9  $atom:C6  $atom:C7
+    $bond:b10  $atom:C7  $atom:C8
+    $bond:b11  $atom:C  $atom:O1
+    $bond:b12  $atom:C5  $atom:O2
+    $bond:b13  $atom:C6  $atom:N1
+    $bond:b14  $atom:C8  $atom:C9
+    $bond:b15  $atom:C9  $atom:C10
+    $bond:b16  $atom:C10  $atom:N2
+    $bond:b17  $atom:N2  $atom:C11
+    $bond:b18  $atom:C8  $atom:C11
+    $bond:b19  $atom:C10  $atom:C12
+    $bond:b20  $atom:C12  $atom:C13
+    $bond:b21  $atom:C13  $atom:C14
+    $bond:b22  $atom:C14  $atom:C15
+    $bond:b23  $atom:C9  $atom:C15
+    $bond:b24  $atom:C4  $atom:O3
+    $bond:b25  $atom:C4  $atom:O4
+    $bond:b26  $atom:O  $atom:H
+    $bond:b27  $atom:C1  $atom:H1
+    $bond:b28  $atom:C1  $atom:H2
+    $bond:b29  $atom:C2  $atom:H3
+    $bond:b30  $atom:C2  $atom:H4
+    $bond:b31  $atom:C3  $atom:H5
+    $bond:b32  $atom:N  $atom:H6
+    $bond:b33  $atom:C6  $atom:H7
+    $bond:b34  $atom:C7  $atom:H8
+    $bond:b35  $atom:C7  $atom:H9
+    $bond:b36  $atom:N1  $atom:H10
+    $bond:b37  $atom:N1  $atom:H11
+    $bond:b38  $atom:N2  $atom:H12
+    $bond:b39  $atom:C11  $atom:H13
+    $bond:b40  $atom:C12  $atom:H14
+    $bond:b41  $atom:C13  $atom:H15
+    $bond:b42  $atom:C14  $atom:H16
+    $bond:b43  $atom:C15  $atom:H17
+    $bond:b44  $atom:O3  $atom:H18
+  } # Bonds section
+
+}  # glu
+
+
+
+
+
+
+# -------- INSTRUCTIONS FOR USING THIS FILE: --------
+# So far, we have just defined (one or more) molecular subunits.
+# If you want to use these molecule(s) in a simulation, you must instantiate
+# copies of them.  To do that you would the "new" command.  For example:
+#
+# glu_instance = new glu
+#
+# You could either put this command here, or in a separate file.
+# (...Such as "system.lt".  In that case remember to use moltemplate's
+#  "import" command to import this file beforehand because you must ensure
+#  that the molecules in this file are loaded before they are used.)
+#
+# Note: You can also modify the position and orientation of each copy
+# using the .move() and .rot() commands.  (See the moltemplate manual.)
+# ---------------------------------------------------
